@@ -1,0 +1,19 @@
+<main>
+    <div class="row">
+        <div class="col-md-8 col-12">        
+            <h1 class="page-title">KartVizit Page</h1>
+            <p class="page-description">KartVizit app about</p>
+        </div>
+        <div class="col-md-4 col-12 d-flex justify-content-end">
+            <button mat-flat-button color="primary" (click)="openDialog()">New Card Vizit</button>
+        </div>
+    </div>
+    <hr>
+    <div class="cards">
+        <div class="row">
+            <div class="col-12 col-md-3" *ngFor="let card of cards">
+                <app-card-item [cardItem]="card"></app-card-item>
+            </div>
+        </div>
+    </div>
+</main>

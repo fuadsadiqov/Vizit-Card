@@ -1,0 +1,19 @@
+<mat-card class="example-card mb-4">
+    <mat-card-header>
+      <mat-card-title (click)="openUpdateCardModal()">{{cardItem.title}}</mat-card-title>
+      <mat-card-subtitle>{{cardItem.name}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">{{cardItem.phone}}</li>
+            <li class="list-group-item">
+              <span>{{cardItem.email}}</span>
+              <small *ngIf="!cardItem.email" class="text-danger pt-2">Not found any email</small>
+            </li>
+            <li class="list-group-item">
+              <span>{{cardItem.address}}</span>
+              <small *ngIf="!cardItem.address" class="text-danger pt-2">Not found any adress</small>
+            </li>    
+        </ul>
+    </mat-card-content>
+  </mat-card>

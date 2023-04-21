@@ -1,0 +1,41 @@
+<div class="px-2 py-1">
+    <h2 mat-dialog-title>New CardVizit</h2>
+    <mat-dialog-content>
+        <form [formGroup]="formGroup">
+                <mat-form-field class="example-form">
+                <mat-label>
+                    Title
+                </mat-label>
+                    <input class="example-full-width" type="text" matInput formControlName="title" placeholder="Title">
+                </mat-form-field>
+                <mat-form-field class="example-form">
+                <mat-label>
+                    Name
+                </mat-label>
+                    <input class="example-full-width" type="text" matInput formControlName="name" placeholder="Name">    
+                </mat-form-field>
+                <mat-form-field class="example-form">
+                <mat-label>
+                    Email
+                </mat-label>
+                    <input class="example-full-width" type="email" matInput formControlName="email" placeholder="Email">    
+                </mat-form-field>
+                <mat-form-field class="example-form">
+                <mat-label>
+                    Phone
+                </mat-label>
+                    <input class="example-full-width" type="text" matInput formControlName="phone" placeholder="Phone">
+                </mat-form-field>
+                <mat-form-field class="example-form">
+                <mat-label>
+                    Address
+                </mat-label>
+                    <input class="example-full-width" type="text" matInput formControlName="address" placeholder="Address">
+                </mat-form-field>
+        </form>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button mat-button (click)="addCard()">Add</button>
+    </mat-dialog-actions>
+</div>
