@@ -8,17 +8,27 @@ import { Observable } from 'rxjs';
 })
 export class CardService {
 
+  cards!: Card[]
   
   constructor(
     @Inject('apiUrl') private apiUrl: string,
     private http: HttpClient
     ) { }
 
-  getCards(): Observable<Card[]>{
-    return this.http.get<Card[]>(this.apiUrl + "/cards") 
+  getCards(){
+    this.http.get<Card[]>(this.apiUrl + "/cards")
+    .subscribe((res: Card[]) => {
+      this.cards = res
+    }) 
   }
-  postCards(newCard: Card){
+  postCards(newCard: Card): Observable<any>{
     return this.http.post(this.apiUrl + "/cards", newCard)
+  }
+  updateCards(newCard: Card, cardId: number): Observable<any>{
+    return this.http.put(this.apiUrl + "/cards/" + cardId, newCard)
+  }
+  deleteCard(cardId: number){
+    return this.http.delete(this.apiUrl + "/cards/" + cardId)
   }
 }
  

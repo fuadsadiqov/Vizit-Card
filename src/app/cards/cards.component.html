@@ -11,7 +11,10 @@
     <hr>
     <div class="cards">
         <div class="row">
-            <div class="col-12 col-md-3" *ngFor="let card of cards">
+            <div class="col-12 d-flex align-items-center justify-content-center" *ngIf="!cardService.cards">
+                <mat-spinner></mat-spinner>
+            </div>
+            <div class="col-12 col-md-3" *ngFor="let card of cardService.cards">
                 <app-card-item [cardItem]="card"></app-card-item>
             </div>
         </div>

@@ -1,6 +1,12 @@
 <div class="px-2 py-1">
-    <h2 mat-dialog-title>New CardVizit</h2>
+    <h2 mat-dialog-title >
+        <span *ngIf="!data">New CardVizit</span>
+        <span *ngIf="data">Update CardVizit</span>
+    </h2>
     <mat-dialog-content>
+        <div>
+            <mat-progress-bar *ngIf="formGroup.invalid" mode="indeterminate"></mat-progress-bar> <br>
+        </div>
         <form [formGroup]="formGroup">
                 <mat-form-field class="example-form">
                 <mat-label>
@@ -34,8 +40,19 @@
                 </mat-form-field>
         </form>
     </mat-dialog-content>
-    <mat-dialog-actions>
-        <button mat-button mat-dialog-close>Cancel</button>
-        <button mat-button (click)="addCard()">Add</button>
+    <mat-dialog-actions class="modal-bottom">
+        <div>
+            <button *ngIf="data" [disabled]="showSpinner" mat-fab color="warn" (click)="deleteCard()" aria-label="Example icon button with a delete icon">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </div>
+        <div>
+            <button mat-button mat-dialog-close>Cancel</button>
+            <button [disabled]="formGroup.invalid || showSpinner" color="primary" mat-raised-button (click)="data ? updateCard() : addCard()">
+                <span *ngIf="!data">Add</span>
+                <span *ngIf="data">Update</span>
+                <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+            </button>
+        </div>
     </mat-dialog-actions>
 </div>

@@ -13,10 +13,10 @@ export class CardItemComponent {
   @Input() cardItem!: Card
   constructor(private dialogRef: MatDialog){}
 
-  openUpdateCardModal(): void{
+  openUpdateCardModal(card: Card): void{
     this.dialogRef.open(CardModalComponent, {
       width: '400px',
-      data: this.cardItem
+      data: card
     })
   }
 }
