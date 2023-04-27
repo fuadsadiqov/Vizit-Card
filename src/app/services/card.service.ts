@@ -9,12 +9,15 @@ import { Observable } from 'rxjs';
 export class CardService {
 
   cards!: Card[]
-  
+  cardDetailItem!: any
   constructor(
     @Inject('apiUrl') private apiUrl: string,
     private http: HttpClient
     ) { }
 
+  getCardsByDefault(){
+    return this.http.get<Card[]>(this.apiUrl + "/cards")
+}
   getCards(){
     this.http.get<Card[]>(this.apiUrl + "/cards")
     .subscribe((res: Card[]) => {
@@ -30,5 +33,7 @@ export class CardService {
   deleteCard(cardId: number){
     return this.http.delete(this.apiUrl + "/cards/" + cardId)
   }
+  cardDetail(id?: number): any{
+    this.cardDetailItem = id
+  }
 }
- 

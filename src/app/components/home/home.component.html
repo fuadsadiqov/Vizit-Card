@@ -1,4 +1,27 @@
 <main>
     <h1 class="page-title">Home Page</h1>
     <p class="page-description">KartVizit app</p>
+    <button color="primary" class="m-1" (click)="filterByDefault()" mat-raised-button>Filter by default</button>
+    <button color="primary" class="m-1" (click)="filterByName()" mat-raised-button>Filter by alphabetic</button>
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+                <mat-form-field class="example-form-field">
+                    <mat-label>Search</mat-label>
+                    <input matInput type="text" #inputValue (keyup)="searchByName(inputValue.value)">
+                </mat-form-field>
+        </div>
+    </div>
+    <div *ngIf="!cards" class="row">
+        <div class="col-12 d-flex justify-content-center items-center">
+            <mat-spinner></mat-spinner>
+        </div>
+    </div>
+    <div class="row">
+        <div *ngIf="filteredCards?.length == 0 && inputValue.value" class="col-12 d-flex justify-content-center">
+            <span class="mx-2">Not found any card vizit</span>
+        </div>
+        <div class="col-12 col-md-4" *ngFor="let cardItem of filteredCards">
+            <app-home-item [cardItem]="cardItem"></app-home-item>
+        </div>
+    </div>
 </main>
