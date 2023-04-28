@@ -9,15 +9,15 @@ import { CardService } from 'src/app/services/card.service';
 })
 export class AboutComponent implements OnInit{
   constructor(private cardService: CardService){
-    this.cardService.getCardsByDefault().subscribe(cardsArr => this.cards = cardsArr)
-    this.cards?.filter(card => {
-      if(card.id === this.cardService.cardDetailItem){
-        this.cardItem = card
-      }
+    this.cardService.getCardsByDefault().subscribe(cards => {
+      cards.filter(card => {
+        if(card.id == this.cardService.cardDetailItem){
+          this.cardItem = card          
+        }
+      })
     })
-    console.log(this.cardItem);
-
   }
+
   cardItem?: Card
   cards?: Card[]
 
