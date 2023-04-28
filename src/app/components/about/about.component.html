@@ -1,9 +1,11 @@
 <main>
     <h1 class="page-title">About Page</h1>
     <p class="page-description">KartVizit app about</p>
-    <p>{{cardItem?.title}}</p>
-    <p>{{cardItem?.name}}</p>
-    <p>{{cardItem?.phone}}</p>
-    <p>{{cardItem?.email}}</p>
-    <p>{{cardItem?.address}}</p>
+    <div class="detail-item d-flex">
+        <h2>{{cardItem?.name}}</h2>
+        <h4>{{cardItem?.title}}</h4>
+        <p>{{cardItem?.phone}}</p>
+        <p>{{cardItem?.email || cardItem && "Not found any email"}}</p>
+        <p>{{cardItem?.address || cardItem && "Not found any address"}}</p>
+    </div>
 </main>
