@@ -1,14 +1,25 @@
 <main>
-    <h1 class="page-title">Home Page</h1>
-    <p class="page-description">KartVizit app</p>
-    <button color="primary" class="m-1" (click)="filterByDefault()" mat-raised-button>Filter by default</button>
-    <button color="primary" class="m-1" (click)="filterByName()" mat-raised-button>Filter by alphabetic</button>
-    <div class="row">
-        <div class="col-12 d-flex justify-content-center">
-                <mat-form-field class="example-form-field">
-                    <mat-label>Search</mat-label>
-                    <input matInput type="text" #inputValue (keyup)="searchByName(inputValue.value)">
-                </mat-form-field>
+    <div>
+        <h1 class="page-title">Home Page</h1>
+        <p class="page-description">KartVizit app</p>
+    </div>
+    <div class="header row align-items-center justify-content-between">
+        <div class="header-left col-md-3 mb-2 col-12 column justify-content-center">
+            <button color="primary" class="m-1" (click)="filterByDefault()" mat-raised-button>Filter by default</button>
+            <button color="primary" class="m-1" (click)="filterByName()" mat-raised-button>Filter by alphabetic</button>    
+        </div>
+        <div class="d-flex col-md-6 col-12 mb-2 justify-content-center">
+            <mat-form-field class="example-form-field">
+                <mat-label>Search</mat-label>
+                <input class="search-input" matInput type="text" #inputValue (keyup)="searchByName(inputValue.value)">
+              </mat-form-field>
+        </div>
+        <div class="btn-toggle mb-2 col-md-3 mb-2 col-12 d-md-flex d-none justify-content-end">
+            <mat-button-toggle-group #group="matButtonToggleGroup">
+                <mat-button-toggle value="12">1</mat-button-toggle>
+                <mat-button-toggle value="6">2</mat-button-toggle>
+                <mat-button-toggle value="4">3</mat-button-toggle>
+              </mat-button-toggle-group>
         </div>
     </div>
     <div *ngIf="!cards" class="row">
@@ -20,7 +31,7 @@
         <div *ngIf="filteredCards?.length == 0 && inputValue.value" class="col-12 d-flex justify-content-center">
             <span class="mx-2">Not found any card vizit</span>
         </div>
-        <div class="col-12 col-md-4" *ngFor="let cardItem of filteredCards">
+        <div class="col-12 col-md-{{group.value}}" [class.col-md-4]="group" *ngFor="let cardItem of filteredCards">
             <app-home-item [cardItem]="cardItem"></app-home-item>
         </div>
     </div>

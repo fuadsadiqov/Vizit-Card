@@ -1,11 +1,14 @@
-<main>
+<main class="d-flex align-items-center flex-column">
     <h1 class="page-title">About Page</h1>
     <p class="page-description">KartVizit app about</p>
-    <div class="detail-item d-flex">
-        <h2>{{cardItem?.name}}</h2>
-        <h4>{{cardItem?.title}}</h4>
-        <p>{{cardItem?.phone}}</p>
-        <p>{{cardItem?.email || cardItem && "Not found any email"}}</p>
-        <p>{{cardItem?.address || cardItem && "Not found any address"}}</p>
+    <div [class.detail-item.d-flex]="cardItem">
+        <h2 *ngIf="cardItem?.name">Name: {{cardItem?.name}}</h2>
+        <h4 *ngIf="cardItem?.title">Title: {{cardItem?.title}}</h4>
+        <p *ngIf="cardItem?.phone">Contact: {{cardItem?.phone}}</p>
+        <p *ngIf="cardItem" [class.text-danger]="!cardItem.email">Email: {{cardItem?.email || cardItem && "Not found any email"}}</p>
+        <p *ngIf="cardItem" [class.text-danger]="!cardItem.address">Address: {{cardItem?.address || cardItem && "Not found any address"}}</p>
     </div>
 </main>
+<div *ngIf="!cardItem" class="d-flex justify-content-center">
+    <mat-spinner></mat-spinner>
+</div>

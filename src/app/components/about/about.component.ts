@@ -18,10 +18,8 @@ export class AboutComponent implements OnInit{
     })
   }
 
-  cardItem?: Card
+  cardItem?: any = null
   cards?: Card[]
 
-  ngOnInit(){ 
-    
-  }
+  ngOnInit(){}
 }
